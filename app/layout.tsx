@@ -6,8 +6,7 @@ import clsx from "clsx";
 import { Providers } from "./provider";
 import { Toaster } from "react-hot-toast";
 import { NavigationBar } from "@/components/shared/NavigationBar";
-
-
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 export const viewport: Viewport = {
     themeColor: [
@@ -66,7 +65,9 @@ export default function RootLayout({
                             {children}
                         </main>
                     </div>
-                </Providers></body>
+                </Providers>
+            </body>
+            <GoogleAnalytics gaId="G-Z6WDXYW5WY" />
         </html >
     );
 }
