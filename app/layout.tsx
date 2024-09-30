@@ -52,7 +52,6 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning={true}>
             <body
-
                 className={clsx(
                     "min-h-screen bg-background",
                     fontSans.variable
@@ -66,6 +65,21 @@ export default function RootLayout({
                         </main>
                     </div>
                 </Providers>
+                <script
+                    async
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2889277787752693"
+                    crossOrigin="anonymous">
+                </script>
+                <ins
+                    className="adsbygoogle"
+                    style={{ display: "block" }}
+                    data-ad-client="ca-pub-2889277787752693"
+                    data-ad-slot="6964229794"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({ });
+                </script>
             </body>
             <GoogleAnalytics gaId="G-Z6WDXYW5WY" />
         </html >
