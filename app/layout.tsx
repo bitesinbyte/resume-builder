@@ -1,11 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
 import "../styles/globals.css";
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/font";
 import clsx from "clsx";
 import { Providers } from "./provider";
 import { Toaster } from "react-hot-toast";
+import { NavigationBar } from "@/components/shared/NavigationBar";
 
 
 
@@ -60,6 +60,7 @@ export default function RootLayout({
                 )}>
                 <Providers themeProps={{ attribute: "class", enableSystem: false }}>
                     <div >
+                        <NavigationBar />
                         <main className="container mx-auto max-w-7xl pt-16 px-6 flex-grow">
                             <Toaster position="top-right" reverseOrder={false} />
                             {children}

@@ -1,6 +1,7 @@
 import FormButton from "./FormButton";
 import React, { useContext } from "react";
 import { ResumeContext } from "../shared/builder";
+import { Input } from "@nextui-org/react";
 
 const Education = () => {
   const { resumeData, setResumeData } = useContext(ResumeContext);
@@ -30,36 +31,42 @@ const Education = () => {
 
   return (
     <div className="flex-col-gap-2">
-      <h2 className="input-title">Education</h2>
+      <h2 className="font-bold">Education</h2>
       {resumeData.education.map((education: any, index: any) => (
-        <div key={index} className="f-col">
-          <input
+        <div key={index} className="flex-col-gap-2">
+          <Input
+            variant="bordered"
             type="text"
             placeholder="School"
             name="school"
-            className="w-full other-input"
+            className="w-full"
+            label="School"
             value={education.school}
             onChange={(e) => handleEducation(e, index)} />
-          <input
+          <Input
             type="text"
+            variant="bordered"
             placeholder="Degree"
+            label="Degree"
             name="degree"
-            className="w-full other-input"
+            className="w-full"
             value={education.degree}
             onChange={(e) => handleEducation(e, index)} />
           <div className="flex-wrap-gap-2">
-            <input
+            <Input
               type="date"
+              variant="bordered"
               placeholder="Start Year"
+              label="Start Year"
               name="startYear"
-              className="other-input"
               value={education.startYear}
               onChange={(e) => handleEducation(e, index)} />
-            <input
+            <Input
               type="date"
+              variant="bordered"
               placeholder="End Year"
+              label="End Year"
               name="endYear"
-              className="other-input"
               value={education.endYear}
               onChange={(e) => handleEducation(e, index)} />
           </div>

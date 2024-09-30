@@ -1,6 +1,7 @@
 import FormButton from "./FormButton";
 import React, { useContext } from "react";
 import { ResumeContext } from "../shared/builder";
+import { Input, Textarea } from "@nextui-org/react";
 
 const Projects = () => {
   const { resumeData, setResumeData } = useContext(ResumeContext);
@@ -36,57 +37,61 @@ const Projects = () => {
   };
 
   return (
-    <div className="flex-col-gap-2">
-      <h2 className="input-title">Projects</h2>
+    <div>
+      <h2 className="font-bold">Projects</h2>
       {resumeData.projects.map((project, index) => (
-        <div key={index} className="f-col">
-          <input
+        <div key={index} className="flex-col-gap-2">
+          <Input
+            variant="bordered"
             type="text"
             placeholder="Project Name"
+            label="Project Name"
             name="name"
-            className="w-full other-input"
             value={project.name}
             onChange={(e) => handleProjects(e, index)}
           />
-          <input
+          <Input
+            variant="bordered"
             type="text"
             placeholder="Link"
             name="link"
-            className="w-full other-input"
             value={project.link}
             onChange={(e) => handleProjects(e, index)}
           />
-          <textarea
+          <Textarea
             type="text"
             placeholder="Description"
+            label="Description"
             name="description"
-            className="w-full other-input h-32"
             value={project.description}
-            maxLength="250"
+            maxLength={250}
             onChange={(e) => handleProjects(e, index)}
           />
-          <textarea
+          <Textarea
+            variant="bordered"
             type="text"
             placeholder="Key Achievements"
+            label="Key Achievements"
             name="keyAchievements"
-            className="w-full other-input h-40"
             value={project.keyAchievements}
             onChange={(e) => handleProjects(e, index)}
           />
           <div className="flex-wrap-gap-2">
-            <input
+            <Input
+              variant="bordered"
               type="date"
               placeholder="Start Year"
+              label="Start Year"
               name="startYear"
-              className="other-input"
               value={project.startYear}
               onChange={(e) => handleProjects(e, index)}
             />
-            <input
+            <Input
+              variant="bordered"
               type="date"
               placeholder="End Year"
+              label="End Year"
               name="endYear"
-              className="other-input"
               value={project.endYear}
               onChange={(e) => handleProjects(e, index)}
             />

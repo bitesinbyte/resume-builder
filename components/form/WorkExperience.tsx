@@ -1,6 +1,7 @@
 import FormButton from "./FormButton";
 import React, { useContext } from "react";
 import { ResumeContext } from "../shared/builder";
+import { Input, Textarea } from "@nextui-org/react";
 
 const WorkExperience = () => {
   const {
@@ -39,57 +40,65 @@ const WorkExperience = () => {
   };
 
   return (
-    <div className="flex-col-gap-2">
-      <h2 className="input-title">Work Experience</h2>
+    <div>
+      <h2 className="font-bold">Work Experience</h2>
       {resumeData.workExperience.map((workExperience, index) => (
-        <div key={index} className="f-col">
-          <input
+        <div key={index} className="flex-col-gap-2">
+          <Input
             type="text"
+            variant="bordered"
             placeholder="Company"
+            label="Company"
             name="company"
-            className="w-full other-input"
+            className="w-full"
             value={workExperience.company}
             onChange={(e) => handleWorkExperience(e, index)}
           />
-          <input
+          <Input
+            variant="bordered"
             type="text"
             placeholder="Job Title"
+            label="Job Title"
             name="position"
-            className="w-full other-input"
+            className="w-full"
             value={workExperience.position}
             onChange={(e) => handleWorkExperience(e, index)}
           />
-          <textarea
+          <Textarea
             type="text"
+            variant="bordered"
             placeholder="Description"
+            label="Description"
             name="description"
-            className="w-full other-input h-32"
             value={workExperience.description}
-            maxLength="250"
+            maxLength={250}
             onChange={(e) => handleWorkExperience(e, index)}
           />
-          <textarea
+          <Textarea
+            variant="bordered"
             type="text"
             placeholder="Key Achievements"
+            label="Key Achievements"
             name="keyAchievements"
-            className="w-full other-input h-40"
             value={workExperience.keyAchievements}
             onChange={(e) => handleWorkExperience(e, index)}
           />
           <div className="flex-wrap-gap-2">
-            <input
+            <Input
+              variant="bordered"
               type="date"
               placeholder="Start Year"
+              label="Start Year"
               name="startYear"
-              className="other-input"
               value={workExperience.startYear}
               onChange={(e) => handleWorkExperience(e, index)}
             />
-            <input
+            <Input
+              variant="bordered"
               type="date"
               placeholder="End Year"
+              label="End Year"
               name="endYear"
-              className="other-input"
               value={workExperience.endYear}
               onChange={(e) => handleWorkExperience(e, index)}
             />

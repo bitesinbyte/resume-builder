@@ -1,6 +1,7 @@
 import { FaCloudUploadAlt, FaCloudDownloadAlt } from "react-icons/fa";
 import React, { useContext } from "react";
 import { ResumeContext } from "../shared/builder";
+import { Button, Input } from "@nextui-org/react";
 
 const LoadUnload = () => {
   const { resumeData, setResumeData } = useContext(ResumeContext);
@@ -31,36 +32,34 @@ const LoadUnload = () => {
 
   return (
     <div className="flex flex-wrap gap-4 mb-2 justify-center">
-      <div className="inline-flex flex-row items-center gap-2">
-        <h2 className="text-[1.2rem] text-white">Load Data</h2>
-        <label className="p-2 text-white bg-fuchsia-700 rounded cursor-pointer">
-          <FaCloudUploadAlt className="text-[1.2rem] text-white" />
-          <input
-            aria-label="Load Data"
-            type="file"
-            className="hidden"
-            onChange={handleLoad}
-            accept=".json"
-          />
-        </label>
-      </div>
-      <div className="inline-flex flex-row items-center gap-2">
-        <h2 className="text-[1.2rem] text-white">Save Data</h2>
-        <button
-          aria-label="Save Data"
-          className="p-2 text-white bg-fuchsia-700 rounded"
-          onClick={(event) =>
-            handleDownload(
-              resumeData,
-              resumeData.name + " by ATSResume.json",
-              event
-            )
-          }
-        >
-          <FaCloudDownloadAlt className="text-[1.2rem] text-white" />
-        </button>
-      </div>
+      <label className="flex gap-2 items-center border-solid border-2 border-gray-300 dark:border-slate-500 cursor-pointer p-2 rounded-lg">
+        <h2 className="text-small">Load Data</h2>
+        <FaCloudUploadAlt className="text-[1.2rem]" />
+        <Input
+          aria-label="Load Data"
+          label="Load Data"
+          className="hidden"
+          type="file"
+          onChange={handleLoad}
+          accept=".json"
+        />
+      </label>
+      <Button
+        aria-label="Save Data"
+        variant="bordered"
+        onClick={(event) =>
+          handleDownload(
+            resumeData,
+            resumeData.name + ".json",
+            event
+          )
+        }
+        endContent={<FaCloudDownloadAlt className="text-[1.2rem]" />}
+      >
+        Save Data
+      </Button>
     </div>
+
   );
 };
 

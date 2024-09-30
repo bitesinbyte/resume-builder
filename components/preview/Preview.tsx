@@ -11,7 +11,7 @@ import {
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
 import { CgWebsite } from "react-icons/cg";
 import Skills from "./Skills";
-import DateRange from "../../utility/DateRange";
+import DateRange from "@/components/shared/DateRange";
 import ContactInfo from "./ContactInfo";
 import Image from "next/image";
 import Link from "next/link";

@@ -11,8 +11,8 @@ import { Logo } from "../../icons/logo";
 export const NavigationBar = () => {
     return (
         <>
-            <Navbar className="w-[100%]" maxWidth="2xl" position="sticky" >
-                <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
+            <Navbar className="w-[100%]" maxWidth="2xl" position="sticky">
+                <NavbarContent className="basis-1/5 sm:basis-full exclude-print" justify="start">
                     <NavbarBrand as="li" className="gap-3 max-w-fit">
                         <NextLink className="flex justify-start items-center gap-1" href="/">
                             <Logo />
@@ -20,7 +20,7 @@ export const NavigationBar = () => {
                         </NextLink>
                     </NavbarBrand>
                 </NavbarContent>
-                <NavbarContent className="basis-1 pl-4" justify="end">
+                <NavbarContent className="basis-1 pl-4 exclude-print" justify="end">
                     <ThemeSwitch />
                 </NavbarContent>
             </Navbar >

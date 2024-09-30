@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { ResumeContext } from "../shared/builder";
 import FormButton from "./FormButton";
+import { Input } from "@nextui-org/react";
 
 const Skill = ({ title }) => {
   const { resumeData, setResumeData } = useContext(ResumeContext);
@@ -59,18 +60,16 @@ const Skill = ({ title }) => {
 
   return (
     <div className="flex-col-gap-2">
-      <h2 className="input-title">{title}</h2>
+      <h2 className="font-bold">{title}</h2>
       {skillType.skills.map((skill, index) => (
-        <div key={index} className="f-col">
-          <input
-            type="text"
-            placeholder={title}
-            name={title}
-            className="w-full other-input"
-            value={skill}
-            onChange={(e) => handleSkill(e, index, title)}
-          />
-        </div>
+        <Input
+          key={index}
+          type="text"
+          placeholder={title}
+          name={title}
+          value={skill}
+          onChange={(e) => handleSkill(e, index, title)}
+        />
       ))}
       <FormButton
         size={skillType.skills.length}
