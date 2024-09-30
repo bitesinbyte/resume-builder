@@ -1,17 +1,38 @@
 import FormButton from "./FormButton";
 import React, { useContext } from "react";
-import { ResumeContext } from "../shared/builder";
-import { Input, Textarea } from "@nextui-org/react";
+import { ResumeContext } from "@/app/page";
+
+import { Divider, Input, Textarea } from "@nextui-org/react";
+import { GlobalResumeContext } from "@/types/global-resume-context";
 
 const WorkExperience = () => {
   const {
     resumeData,
     setResumeData,
-  } = useContext(ResumeContext);
+  } = useContext<GlobalResumeContext>(ResumeContext);
 
-  const handleWorkExperience = (e, index) => {
+  const handleWorkExperience = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
     const newworkExperience = [...resumeData.workExperience];
-    newworkExperience[index][e.target.name] = e.target.value;
+    switch (e.target.name) {
+      case "company":
+        newworkExperience[index].company = e.target.value;
+        break;
+      case "position":
+        newworkExperience[index].position = e.target.value;
+        break;
+      case "description":
+        newworkExperience[index].description = e.target.value;
+        break;
+      case "keyAchievements":
+        newworkExperience[index].keyAchievements = e.target.value;
+        break;
+      case "startYear":
+        newworkExperience[index].startYear = e.target.value;
+        break;
+      case "endYear":
+        newworkExperience[index].endYear = e.target.value;
+        break;
+    }
     setResumeData({ ...resumeData, workExperience: newworkExperience });
   };
 
@@ -32,7 +53,7 @@ const WorkExperience = () => {
     });
   };
 
-  const removeWorkExperience = (index) => {
+  const removeWorkExperience = (index: number) => {
     const newworkExperience = [...resumeData.workExperience];
     newworkExperience[index] = newworkExperience[newworkExperience.length - 1];
     newworkExperience.pop();
@@ -40,7 +61,7 @@ const WorkExperience = () => {
   };
 
   return (
-    <div>
+    <div className="flex-col-gap-2">
       <h2 className="font-bold">Work Experience</h2>
       {resumeData.workExperience.map((workExperience, index) => (
         <div key={index} className="flex-col-gap-2">
@@ -83,7 +104,7 @@ const WorkExperience = () => {
             value={workExperience.keyAchievements}
             onChange={(e) => handleWorkExperience(e, index)}
           />
-          <div className="flex-wrap-gap-2">
+          <div className="grid grid-cols-2 gap-1">
             <Input
               variant="bordered"
               type="date"

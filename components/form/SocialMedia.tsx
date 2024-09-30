@@ -1,18 +1,24 @@
 import FormButton from "./FormButton";
 import React, { useContext } from "react";
-import { ResumeContext } from "../shared/builder";
+import { ResumeContext } from "@/app/page";
+
 import { Input } from "@nextui-org/react";
+import { GlobalResumeContext } from "@/types/global-resume-context";
 
 const SocialMedia = () => {
-  const { resumeData, setResumeData } = useContext(ResumeContext);
+  const { resumeData, setResumeData } = useContext<GlobalResumeContext>(ResumeContext);
 
   // social media
-  const handleSocialMedia = (e, index) => {
+  const handleSocialMedia = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
     const newSocialMedia = [...resumeData.socialMedia];
-    newSocialMedia[index][e.target.name] = e.target.value.replace(
-      "https://",
-      ""
-    );
+    switch (e.target.name) {
+      case "socialMedia":
+        newSocialMedia[index].socialMedia = e.target.value;
+        break;
+      case "link":
+        newSocialMedia[index].link = e.target.value.replace("https://", "");
+        break;
+    }
     setResumeData({ ...resumeData, socialMedia: newSocialMedia });
   };
 
@@ -23,7 +29,7 @@ const SocialMedia = () => {
     });
   };
 
-  const removeSocialMedia = (index) => {
+  const removeSocialMedia = (index: number) => {
     const newSocialMedia = [...resumeData.socialMedia];
     newSocialMedia[index] = newSocialMedia[newSocialMedia.length - 1];
     newSocialMedia.pop();

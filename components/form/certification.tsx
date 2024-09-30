@@ -1,15 +1,16 @@
 import React, { useContext } from "react";
-import { ResumeContext } from "../shared/builder";
 import FormButton from "./FormButton";
 import { Input } from "@nextui-org/react";
+import { ResumeContext } from "@/app/page";
+import { GlobalResumeContext } from "@/types/global-resume-context";
 
 const Certification = () => {
-  const { resumeData, setResumeData } = useContext(ResumeContext);
+  const { resumeData, setResumeData } = useContext<GlobalResumeContext>(ResumeContext);
   const skillType = "certifications";
   const title = "Certifications";
 
-  const handleSkills = (e: any, index: any, skillType: any) => {
-    const newSkills = [...resumeData[skillType]];
+  const handleSkills = (e: any, index: number, skillType: string) => {
+    const newSkills = [...resumeData.certifications];
     newSkills[index] = e.target.value;
     setResumeData({ ...resumeData, [skillType]: newSkills });
   };

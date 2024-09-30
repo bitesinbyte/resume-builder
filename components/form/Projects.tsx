@@ -1,14 +1,34 @@
 import FormButton from "./FormButton";
 import React, { useContext } from "react";
-import { ResumeContext } from "../shared/builder";
+import { ResumeContext } from "@/app/page";
 import { Input, Textarea } from "@nextui-org/react";
+import { GlobalResumeContext } from "@/types/global-resume-context";
 
 const Projects = () => {
-  const { resumeData, setResumeData } = useContext(ResumeContext);
+  const { resumeData, setResumeData } = useContext<GlobalResumeContext>(ResumeContext);
 
-  const handleProjects = (e, index) => {
+  const handleProjects = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
     const newProjects = [...resumeData.projects];
-    newProjects[index][e.target.name] = e.target.value;
+    switch (e.target.name) {
+      case "name":
+        newProjects[index].name = e.target.value;
+        break;
+      case "link":
+        newProjects[index].link = e.target.value;
+        break;
+      case "description":
+        newProjects[index].description = e.target.value;
+        break;
+      case "keyAchievements":
+        newProjects[index].keyAchievements = e.target.value;
+        break;
+      case "startYear":
+        newProjects[index].startYear = e.target.value;
+        break;
+      case "endYear":
+        newProjects[index].endYear = e.target.value;
+        break;
+    }
     setResumeData({ ...resumeData, projects: newProjects });
   };
 
@@ -18,7 +38,7 @@ const Projects = () => {
       projects: [
         ...resumeData.projects,
         {
-          title: "",
+          name: "",
           link: "",
           description: "",
           keyAchievements: "",
@@ -29,7 +49,7 @@ const Projects = () => {
     });
   };
 
-  const removeProjects = (index) => {
+  const removeProjects = (index: number) => {
     const newProjects = [...resumeData.projects];
     newProjects[index] = newProjects[newProjects.length - 1];
     newProjects.pop();
@@ -76,7 +96,7 @@ const Projects = () => {
             value={project.keyAchievements}
             onChange={(e) => handleProjects(e, index)}
           />
-          <div className="flex-wrap-gap-2">
+          <div className="grid grid-cols-2 gap-1">
             <Input
               variant="bordered"
               type="date"

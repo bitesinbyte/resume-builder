@@ -1,4 +1,7 @@
-export const DefaultResumeData = {
+import { GlobalResumeContext } from "@/types/global-resume-context";
+import { Resume } from "@/types/resume";
+
+export const DefaultResumeData:Resume = {
   name: "MARCUS HALL",
   position: "Developer",
   contactInformation: "+1-555-0100",
@@ -22,10 +25,10 @@ export const DefaultResumeData = {
   summary: "Resourceful Developer with 11 years of experience in designing and developing user interfaces, testing and training employees. Skilled at utilizing a wide variety of tools and programs to provide effective applications.",
   education: [
     {
-      "school": "Bachelor of Computer Science",
-      "degree": "New York University",
-      "startYear": "2020-08-20",
-      "endYear": "2024-07-01"
+      school: "Bachelor of Computer Science",
+      degree: "New York University",
+      startYear: "2020-08-20",
+      endYear: "2024-07-01"
     },
   ],
   workExperience: [
@@ -83,4 +86,11 @@ export const DefaultResumeData = {
     "Certified Web Professional-Web Developer",
     "Java Development Certified Professional",
   ],
+};
+
+export const DefaultResumeContextData:GlobalResumeContext={
+  resumeData: DefaultResumeData,
+  setResumeData: (data: Resume) => {},
+  handleProfilePicture: (e: any) => {},
+  handleChange: (e: any) => {},
 };

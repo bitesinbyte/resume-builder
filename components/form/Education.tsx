@@ -1,14 +1,28 @@
 import FormButton from "./FormButton";
-import React, { useContext } from "react";
-import { ResumeContext } from "../shared/builder";
+import React, { Context, useContext } from "react";
 import { Input } from "@nextui-org/react";
+import { ResumeContext } from "@/app/page";
+import { GlobalResumeContext } from "@/types/global-resume-context";
+
 
 const Education = () => {
-  const { resumeData, setResumeData } = useContext(ResumeContext);
-
-  const handleEducation = (e: any, index: any) => {
+  const { resumeData, setResumeData } = useContext<GlobalResumeContext>(ResumeContext);
+  const handleEducation = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
     const newEducation = [...resumeData.education];
-    newEducation[index][e.target.name] = e.target.value;
+    switch (e.target.name) {
+      case "school":
+        newEducation[index].school = e.target.value;
+        break;
+      case "degree":
+        newEducation[index].degree = e.target.value;
+        break;
+      case "startYear":
+        newEducation[index].startYear = e.target.value;
+        break;
+      case "endYear":
+        newEducation[index].endYear = e.target.value;
+        break;
+    }
     setResumeData({ ...resumeData, education: newEducation });
   };
 
@@ -52,7 +66,7 @@ const Education = () => {
             className="w-full"
             value={education.degree}
             onChange={(e) => handleEducation(e, index)} />
-          <div className="flex-wrap-gap-2">
+          <div className="grid grid-cols-2 gap-1">
             <Input
               type="date"
               variant="bordered"

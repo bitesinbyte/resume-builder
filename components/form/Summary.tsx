@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
-import { ResumeContext } from "../shared/builder";
+import { ResumeContext } from "@/app/page";
+
 import { Textarea } from "@nextui-org/react";
+import { GlobalResumeContext } from "@/types/global-resume-context";
 const Summary = () => {
-  const { resumeData, setResumeData, handleChange } = useContext(ResumeContext);
+  const { resumeData, handleChange } = useContext<GlobalResumeContext>(ResumeContext);
   return (
     <div className="flex-col-gap-2">
       <h2 className="input-title">Summary</h2>

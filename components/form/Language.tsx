@@ -1,16 +1,17 @@
 import React, { useContext } from "react";
-import { ResumeContext } from "../shared/builder";
+import { ResumeContext } from "@/app/page";
 import FormButton from "./FormButton";
 import { Input } from "@nextui-org/react";
+import { GlobalResumeContext } from "@/types/global-resume-context";
 
 const Language = () => {
-  const { resumeData, setResumeData } = useContext(ResumeContext);
+  const { resumeData, setResumeData } = useContext<GlobalResumeContext>(ResumeContext);
   const skillType = "languages";
   const title = "Languages";
   const placeholder = "Language";
 
-  const handleSkills = (e: any, index: any, skillType: any) => {
-    const newSkills = [...resumeData[skillType]];
+  const handleSkills = (e: React.ChangeEvent<HTMLInputElement>, index: number, skillType: any) => {
+    const newSkills = [...resumeData.languages];
     newSkills[index] = e.target.value;
     setResumeData({ ...resumeData, [skillType]: newSkills });
   };
@@ -19,7 +20,7 @@ const Language = () => {
     setResumeData({ ...resumeData, [skillType]: [...resumeData[skillType], ""] });
   };
 
-  const removeSkill = (index: any) => {
+  const removeSkill = (index: number) => {
     const newSkills = [...resumeData[skillType]];
     newSkills.splice(-1, 1);
     setResumeData({ ...resumeData, [skillType]: newSkills });
@@ -28,7 +29,7 @@ const Language = () => {
   return (
     <div className="flex-col-gap-2">
       <h2 className="font-bold">{title}</h2>
-      {resumeData[skillType].map((skill: any, index: any) => (
+      {resumeData[skillType].map((skill: any, index: number) => (
 
         <Input
           key={index}

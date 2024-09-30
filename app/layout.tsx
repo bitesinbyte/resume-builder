@@ -55,7 +55,7 @@ export default function RootLayout({
             <body
 
                 className={clsx(
-                    "min-h-screen bg-background font-sans antialiased",
+                    "min-h-screen bg-background",
                     fontSans.variable
                 )}>
                 <Providers themeProps={{ attribute: "class", enableSystem: false }}>

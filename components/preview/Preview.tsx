@@ -16,7 +16,7 @@ import ContactInfo from "./ContactInfo";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useContext, useState } from "react";
-import { ResumeContext } from "../shared/builder";
+import { ResumeContext } from "@/app/page";
 import dynamic from "next/dynamic";
 import Language from "./Language";
 import Certification from "./Certification";
@@ -58,7 +58,7 @@ const Preview = () => {
     { name: "website", icon: <CgWebsite /> },
   ];
 
-  const onDragEnd = (result) => {
+  const onDragEnd = (result: any) => {
     const { destination, source } = result;
 
     if (!destination) return;
@@ -114,25 +114,25 @@ const Preview = () => {
     }
   };
 
-  const MenuButton = ({ title, icon, onClick }) => (
+  const MenuButton = ({ title, icon, onClick }: { title: string, icon: any, onClick: any }) => (
     <button
       onClick={onClick}
       title={title}
-      className="p-2 hover:bg-gray-200 rounded font-semibold"
+      className="p-2 rounded font-semibold"
     >
       {icon}
     </button>
   );
 
-  const formatText = (command, value = null) => {
+  const formatText = (command: any, value?: string) => {
     document.execCommand(command, false, value);
   };
 
   const toggleBold = () => formatText('bold');
   const toggleItalic = () => formatText('italic');
   const toggleUnderline = () => formatText('underline');
-  const changeFontSize = (size) => formatText('fontSize', size);
-  const alignText = (alignment) => formatText(`justify${alignment}`);
+  const changeFontSize = (size: string) => formatText('fontSize', size);
+  const alignText = (alignment: string) => formatText(`justify${alignment}`);
 
   useKeyboardShortcut('b', true, toggleBold);
   useKeyboardShortcut('i', true, toggleItalic);
@@ -156,51 +156,42 @@ const Preview = () => {
               <MenuButton
                 title="Bold (Ctrl+B)"
                 icon={<FaBold />}
-                onClick={toggleBold}
-              />
+                onClick={toggleBold} />
               <MenuButton
                 title="Italic (Ctrl+I)"
                 icon={<FaItalic />}
-                onClick={toggleItalic}
-              />
+                onClick={toggleItalic} />
               <MenuButton
                 title="Underline (Ctrl+U)"
                 icon={<FaUnderline />}
-                onClick={toggleUnderline}
-              />
+                onClick={toggleUnderline} />
               <MenuButton
                 title="Increase Font Size"
                 icon={<FaPlus />}
-                onClick={() => changeFontSize(4)}
-              />
+                onClick={() => changeFontSize("4")} />
               <MenuButton
                 title="Decrease Font Size"
                 icon={<FaMinus />}
-                onClick={() => changeFontSize(2)}
-              />
+                onClick={() => changeFontSize("2")} />
 
               <MenuButton
                 title="Align Left"
                 icon={<FaAlignLeft />}
-                onClick={() => alignText('Left')}
-              />
+                onClick={() => alignText('Left')} />
               <MenuButton
                 title="Align Center"
                 icon={<FaAlignCenter />}
-                onClick={() => alignText('Center')}
-              />
+                onClick={() => alignText('Center')} />
               <MenuButton
                 title="Align Right"
                 icon={<FaAlignRight />}
-                onClick={() => alignText('Right')}
-              />
+                onClick={() => alignText('Right')} />
             </>
-          )}
-        />
+          )} allowedPlacements={[]} />
         <DragDropContext onDragEnd={onDragEnd}>
           <div className="f-col items-center mb-1">
-            {resumeData.profilePicture.length > 0 && (
-              <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-fuchsia-700">
+            {resumeData && resumeData.profilePicture && resumeData.profilePicture.length > 0 && (
+              <div className="w-24 h-24 rounded-full overflow-hidden border-2">
                 <Image
                   src={resumeData.profilePicture}
                   alt="profile"
@@ -296,7 +287,7 @@ const Preview = () => {
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
                             className={`mb-1 ${snapshot.isDragging &&
-                              "outline-dashed outline-2 outline-gray-400 bg-white"
+                              "outline-dashed outline-2 outline-gray-400"
                               }`}
                           >
                             <Skills title={skill.title} skills={skill.skills} />
@@ -339,7 +330,7 @@ const Preview = () => {
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
                               className={`mb-1 ${snapshot.isDragging &&
-                                "outline-dashed outline-2 outline-gray-400 bg-white"
+                                "outline-dashed outline-2 outline-gray-400"
                                 }`}
                             >
                               <div className="flex flex-row justify-between space-y-1">
@@ -379,9 +370,9 @@ const Preview = () => {
                                                 {...provided.draggableProps}
                                                 {...provided.dragHandleProps}
                                                 className={`
-                                          hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                          hover:outline-dashed hover:outline-2
                                           ${snapshot.isDragging &&
-                                                  "outline-dashed outline-2 outline-gray-400 bg-white"
+                                                  "outline-dashed outline-2 outline-gray-400"
                                                   }`}
                                               >
                                                 <div
@@ -430,7 +421,7 @@ const Preview = () => {
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
                               className={`mb-1 ${snapshot.isDragging &&
-                                "outline-dashed outline-2 outline-gray-400 bg-white"
+                                "outline-dashed outline-2 outline-gray-400"
                                 }`}
                             >
                               <div className="flex flex-row justify-between space-y-1">
@@ -476,9 +467,9 @@ const Preview = () => {
                                                 {...provided.draggableProps}
                                                 {...provided.dragHandleProps}
                                                 className={`
-                                          hover:outline-dashed hover:outline-2 hover:outline-gray-400
+                                          hover:outline-dashed hover:outline-2
                                           ${snapshot.isDragging &&
-                                                  "outline-dashed outline-2 outline-gray-400 bg-white"
+                                                  "outline-dashed outline-2 outline-gray-400"
                                                   }`}
                                               >
                                                 <div
@@ -515,11 +506,11 @@ const Preview = () => {
   );
 };
 
-const A4PageWrapper = ({ children }) => {
+const A4PageWrapper = ({ children }: { children: any }) => {
   const alertA4Size = () => {
-    const preview = document.querySelector(".preview");
-    const previewHeight = preview.offsetHeight;
-    console.log(previewHeight);
+    const preview: Element | null = document.querySelector(".preview");
+    if (!preview) return;
+    const previewHeight = preview.clientHeight;
     if (previewHeight > 1122) {
       alert("A4 size exceeded");
     }

@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import { ResumeContext } from "../shared/builder";
+import { ResumeContext } from "@/app/page";
 import { Input } from "@nextui-org/react";
 import { Logo } from "@/icons/logo";
 import { FaCloudUploadAlt } from "react-icons/fa";
+import { GlobalResumeContext } from "@/types/global-resume-context";
 const PersonalInformation = ({ }) => {
-  const { resumeData, setResumeData, handleProfilePicture, handleChange } =
-    useContext(ResumeContext);
-
+  const { resumeData, handleProfilePicture, handleChange } =
+    useContext<GlobalResumeContext>(ResumeContext);
   return (
     <div>
       <h2 className="font-bold">Personal Information</h2>

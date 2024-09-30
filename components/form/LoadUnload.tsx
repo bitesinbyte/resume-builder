@@ -1,10 +1,11 @@
 import { FaCloudUploadAlt, FaCloudDownloadAlt } from "react-icons/fa";
 import React, { useContext } from "react";
-import { ResumeContext } from "../shared/builder";
 import { Button, Input } from "@nextui-org/react";
+import { ResumeContext } from "@/app/page";
+import { GlobalResumeContext } from "@/types/global-resume-context";
 
 const LoadUnload = () => {
-  const { resumeData, setResumeData } = useContext(ResumeContext);
+  const { resumeData, setResumeData } = useContext<GlobalResumeContext>(ResumeContext);
 
   // load backup resume data
   const handleLoad = (event: any) => {
