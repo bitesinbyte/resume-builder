@@ -15,10 +15,8 @@ import Skill from "@/components/form/Skill";
 import Certification from "@/components/form/certification";
 import { WinPrint } from "@/components/shared/WinPrint";
 import { Resume } from "@/types/resume";
-import { GlobalResumeContext } from "@/types/global-resume-context";
 import { useReactToPrint } from "react-to-print";
-
-export const ResumeContext = createContext<GlobalResumeContext>(DefaultResumeContextData);
+import { ResumeContext } from "@/types/global-resume-context";
 
 export default function Home() {
   const contentRef = useRef<HTMLDivElement>(null);
