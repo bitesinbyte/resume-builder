@@ -16,7 +16,7 @@ import ContactInfo from "./ContactInfo";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useContext, useState } from "react";
-import { ResumeContext } from "@/app/page";
+import { GlobalResumeContext, ResumeContext } from "@/types/global-resume-context";
 import dynamic from "next/dynamic";
 import Language from "./Language";
 import Certification from "./Certification";
@@ -46,7 +46,7 @@ const Draggable = dynamic(
 );
 
 const Preview = () => {
-  const { resumeData, setResumeData } = useContext(ResumeContext);
+  const { resumeData, setResumeData } = useContext<GlobalResumeContext>(ResumeContext);
   const [content, setContent] = useState(resumeData);
   const icons = [
     { name: "github", icon: <FaGithub /> },

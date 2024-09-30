@@ -1,8 +1,6 @@
 import React, { useContext } from "react";
-import { ResumeContext } from "@/app/page";
-
 import { Textarea } from "@nextui-org/react";
-import { GlobalResumeContext } from "@/types/global-resume-context";
+import { GlobalResumeContext, ResumeContext } from "@/types/global-resume-context";
 const Summary = () => {
   const { resumeData, handleChange } = useContext<GlobalResumeContext>(ResumeContext);
   return (

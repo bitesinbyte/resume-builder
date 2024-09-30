@@ -1,9 +1,7 @@
 import React, { useContext } from "react";
-import { ResumeContext } from "@/app/page";
 import { Input } from "@nextui-org/react";
-import { Logo } from "@/icons/logo";
 import { FaCloudUploadAlt } from "react-icons/fa";
-import { GlobalResumeContext } from "@/types/global-resume-context";
+import { GlobalResumeContext, ResumeContext } from "@/types/global-resume-context";
 const PersonalInformation = ({ }) => {
   const { resumeData, handleProfilePicture, handleChange } =
     useContext<GlobalResumeContext>(ResumeContext);

@@ -1,7 +1,5 @@
 import React, { FocusEventHandler, useContext } from "react";
-import { ResumeContext } from "@/app/page";
-import { GlobalResumeContext } from "@/types/global-resume-context";
-import { Skill } from "@/types/resume";
+import { GlobalResumeContext, ResumeContext } from "@/types/global-resume-context";
 
 
 const Skills = ({ title, skills }: { title: string, skills: string[] }) => {

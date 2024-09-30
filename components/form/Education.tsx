@@ -1,8 +1,7 @@
 import FormButton from "./FormButton";
 import React, { Context, useContext } from "react";
 import { Input } from "@nextui-org/react";
-import { ResumeContext } from "@/app/page";
-import { GlobalResumeContext } from "@/types/global-resume-context";
+import { GlobalResumeContext, ResumeContext } from "@/types/global-resume-context";
 
 
 const Education = () => {

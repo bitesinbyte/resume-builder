@@ -1,9 +1,7 @@
 import FormButton from "./FormButton";
 import React, { useContext } from "react";
-import { ResumeContext } from "@/app/page";
-
-import { Divider, Input, Textarea } from "@nextui-org/react";
-import { GlobalResumeContext } from "@/types/global-resume-context";
+import { Input, Textarea } from "@nextui-org/react";
+import { GlobalResumeContext, ResumeContext } from "@/types/global-resume-context";
 
 const WorkExperience = () => {
   const {

@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
-import { ResumeContext } from "@/app/page";
 import FormButton from "./FormButton";
 import { Input } from "@nextui-org/react";
-import { GlobalResumeContext } from "@/types/global-resume-context";
+import { GlobalResumeContext, ResumeContext } from "@/types/global-resume-context";
 import { Resume, Skill as SkillType } from "@/types/resume";
 
 const Skill = ({ title }: { title: string }) => {

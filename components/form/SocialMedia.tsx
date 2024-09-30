@@ -1,9 +1,7 @@
 import FormButton from "./FormButton";
 import React, { useContext } from "react";
-import { ResumeContext } from "@/app/page";
-
 import { Input } from "@nextui-org/react";
-import { GlobalResumeContext } from "@/types/global-resume-context";
+import { GlobalResumeContext, ResumeContext } from "@/types/global-resume-context";
 
 const SocialMedia = () => {
   const { resumeData, setResumeData } = useContext<GlobalResumeContext>(ResumeContext);
