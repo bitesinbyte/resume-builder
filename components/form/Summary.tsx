@@ -7,12 +7,12 @@ const Summary = () => {
   const { resumeData, handleChange } = useContext<GlobalResumeContext>(ResumeContext);
   return (
     <div className="flex-col-gap-2">
-      <h2 className="input-title">Summary</h2>
+      <h2 className="font-bold">Summary</h2>
       <div className="grid-4">
         <Textarea
           placeholder="Summary"
           name="summary"
-          className="w-full h-40"
+          variant="bordered"
           value={resumeData.summary}
           onChange={handleChange}
           maxLength={500}

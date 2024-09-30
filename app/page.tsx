@@ -1,5 +1,5 @@
 "use client";
-import React, { createContext, useState } from "react";
+import React, { createContext, useRef, useState } from "react";
 import { DefaultResumeContextData, DefaultResumeData } from "@/config/default-resume-data";
 import Language from "@/components/form/Language";
 import Preview from "@/components/preview/Preview";
@@ -16,10 +16,13 @@ import Certification from "@/components/form/certification";
 import { WinPrint } from "@/components/shared/WinPrint";
 import { Resume } from "@/types/resume";
 import { GlobalResumeContext } from "@/types/global-resume-context";
+import { useReactToPrint } from "react-to-print";
 
 export const ResumeContext = createContext<GlobalResumeContext>(DefaultResumeContextData);
 
 export default function Home() {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const handlePrint = useReactToPrint({ contentRef });
   // resume data
   const [resumeData, setResumeData] = useState<Resume>(DefaultResumeData);
 
@@ -47,7 +50,7 @@ export default function Home() {
     setResumeData({ ...resumeData, [e.target.name]: e.target.value });
   };
   return (
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+    <section className="flex flex-col items-center justify-center md:py-10">
       <ResumeContext.Provider
         value={{
           resumeData,
@@ -78,10 +81,12 @@ export default function Home() {
               <Certification />
             </form>
           )}
-          <Preview />
+          <div className="md:max-w-[60%] sticky top-0 preview rm-padding-print p-6 md:overflow-y-scroll md:h-screen" ref={contentRef}>
+            <Preview />
+          </div>
         </div>
         <FormCP formClose={formClose} setFormClose={setFormClose} />
-        <WinPrint />
+        <WinPrint handlePrint={handlePrint} />
       </ResumeContext.Provider>
     </section>
   );

@@ -113,10 +113,32 @@
     font-weight: 700 !important;
 }
 
+
 @media print {
     .exclude-print {
         display: none;
     }
 
+    .rm-padding-print {
+        padding: 0;
+    }
 
+    @page {
+        size: A4;
+        margin: 10mm;
+    }
+
+    .preview {
+        overflow-y: visible !important;
+    }
+
+    .preview::after {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        opacity: 0.2;
+        font-size: small;
+        text-align: center;
+        z-index: -1;
+    }
 }
