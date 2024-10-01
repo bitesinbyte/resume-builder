@@ -7,6 +7,7 @@ import { Providers } from "./provider";
 import { Toaster } from "react-hot-toast";
 import { NavigationBar } from "@/components/shared/NavigationBar";
 import { GoogleAnalytics } from '@next/third-parties/google'
+import Script from "next/script";
 
 export const viewport: Viewport = {
     themeColor: [
@@ -57,7 +58,7 @@ export default function RootLayout({
                     fontSans.variable
                 )}>
                 <Providers themeProps={{ attribute: "class", enableSystem: false }}>
-                    <div >
+                    <div>
                         <NavigationBar />
                         <main className="container mx-auto flex-grow">
                             <Toaster position="top-right" reverseOrder={false} />
@@ -65,8 +66,10 @@ export default function RootLayout({
                         </main>
                     </div>
                 </Providers>
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2889277787752693"
-                    crossOrigin="anonymous"></script>
+                <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2889277787752693"
+                    crossOrigin="anonymous">
+
+                </Script>
             </body>
             <GoogleAnalytics gaId="G-Z6WDXYW5WY" />
         </html >
