@@ -69,6 +69,7 @@ const Skill = ({ title }: { title: string }) => {
         <Input
           key={index}
           type="text"
+          variant="bordered"
           placeholder={title}
           name={title}
           value={skill}

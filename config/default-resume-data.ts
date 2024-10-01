@@ -1,60 +1,61 @@
 import { GlobalResumeContext } from "@/types/global-resume-context";
 import { Resume } from "@/types/resume";
 
+
 export const DefaultResumeData:Resume = {
-  name: "MARCUS HALL",
-  position: "Developer",
-  contactInformation: "+1-555-0100",
-  email: "beddylea@gmail.com",
-  address: "San Francisco, CA",
+  name: "ALEXANDRA EVANS",
+  position: "Software Engineer",
+  contactInformation: "+1-555-1234",
+  email: "alex.evans@example.com",
+  address: "Austin, TX",
   profilePicture: "",
   socialMedia: [
     {
       socialMedia: "Github",
-      link: "github.com/bedivere-lea",
+      link: "github.com/alex-evans",
     },
     {
       socialMedia: "LinkedIn",
-      link: "linkedin.com/in/bedivere-lea",
+      link: "linkedin.com/in/alex-evans-tech",
     },
     {
       socialMedia: "Website",
-      link: "bedivere-lea.github.io",
+      link: "alexevans.dev",
     },
   ],
-  summary: "Resourceful Developer with 11 years of experience in designing and developing user interfaces, testing and training employees. Skilled at utilizing a wide variety of tools and programs to provide effective applications.",
+  summary: "Innovative Software Engineer with 8 years of experience in building scalable web applications and optimizing user experiences. Passionate about solving complex problems and enhancing product performance using modern technologies.",
   education: [
     {
-      school: "Bachelor of Computer Science",
-      degree: "New York University",
-      startYear: "2020-08-20",
-      endYear: "2024-07-01"
+      school: "University of Texas at Austin",
+      degree: "Bachelor of Science in Computer Engineering",
+      startYear: "2014-09-01",
+      endYear: "2018-06-15"
     },
   ],
   workExperience: [
     {
-      "company": "Torph TTC",
-      "position": "Developer",
-      "description": "Torph TTC is a global software company that offers user interface UI development tools and components for a range of developer applications across all platforms.",
-      "keyAchievements": "Created and maintained 10 web applications for numerous national and foreign clients.\nEnsured that the user interfaces and user experience of the software applications developed by the team met at least 80% of users expectations.\nCreated and analyzed 500 unit test cases.\nDeveloped python scripts to automate image's noise-reduction process which helped improve research analysis time by 40%.\nEstablished and lead a team of 10 people; covering every key role in the early stages.",
-      "startYear": "2023-02-16",
-      "endYear": "2023-02-21"
+      company: "CloudTech Solutions",
+      position: "Senior Software Engineer",
+      description: "CloudTech Solutions is a cloud computing company specializing in enterprise solutions, helping businesses scale their digital infrastructure.",
+      keyAchievements: "Designed and implemented a microservices-based architecture that reduced server costs by 25%.\nLed a team of 7 developers to build a highly available cloud platform.\nDecreased page load time by 40% through performance optimizations.\nDeveloped a CI/CD pipeline that improved deployment efficiency by 50%.\nMentored junior engineers and improved their productivity by 30%.",
+      startYear: "2019-04-10",
+      endYear: "2023-09-30"
     },
     {
-      "company": "Reilty Group",
-      "position": "Front End Web Developer",
-      "description": "Reilty Group is an industry-leading provider of online gambling software and solutions.",
-      "keyAchievements": "Increased by 35% the reach of users to the platform, over the installation of the web platform in mobile devices.\nDelivered 30 web solutions.\nReplaced 1 full-time web developer under part-time employment achieving a productivity gain of over 60% as measured by working hours.\nWorked with more than 4 different teams at different points of time and provided end-to-end solutions for clients.",
-      "startYear": "2023-02-22",
-      "endYear": "2023-03-09"
+      company: "BlueSky Technologies",
+      position: "Front-End Engineer",
+      description: "BlueSky Technologies is a tech firm focused on creating web applications for the retail industry.",
+      keyAchievements: "Increased customer engagement by 20% with UI/UX improvements.\nDeveloped and delivered 25+ client-facing web applications.\nMigrated legacy code to modern JavaScript frameworks, improving maintainability by 60%.\nCollaborated with cross-functional teams to meet project deadlines ahead of schedule.",
+      startYear: "2018-07-15",
+      endYear: "2019-03-20"
     },
     {
-      "company": "HellX",
-      "position": "Python Developer",
-      "description": "Heller is a Software Editor specialized in logistics management.",
-      "keyAchievements": "Developed several automation systems - saved over $50,000 annually.\nJoined the team as #10 employee as a developer working directly with the biggest customers.\nInvolved in coding as per the requirement, delivered well ahead of time which saved project cost by 20%.\nReduced database size by nearly 50% and improved its performance by 20%.\nDelivery time of good reduced by 50%.",
-      "startYear": "2023-02-22",
-      "endYear": "2023-03-09"
+      company: "NexaSoft",
+      position: "Software Developer Intern",
+      description: "NexaSoft is a startup offering software solutions for e-commerce platforms.",
+      keyAchievements: "Contributed to the development of an internal tool that reduced manual work by 30%.\nOptimized database queries, improving the application's overall performance by 15%.\nWorked closely with the product team to deliver features aligned with client expectations.",
+      startYear: "2017-06-01",
+      endYear: "2017-08-30"
     }
   ],
   projects: [],
@@ -62,29 +63,29 @@ export const DefaultResumeData:Resume = {
     {
       title: "Technical Skills",
       skills: [
-        "JavaScript", "Python", "Web Services", "C++", "HTML5", "CSS", "SQL", "User Interface", "Creativity"
+        "JavaScript", "Python", "React", "Node.js", "HTML5", "CSS3", "TypeScript", "SQL", "AWS"
       ]
     },
     {
       title: "Soft Skills",
       skills: [
-        "Collaboration", "Problem-solving", "Communication", "Time management", "Result-oriented"
+        "Leadership", "Problem-solving", "Teamwork", "Adaptability", "Critical thinking"
       ]
     },
     {
       title: "Additional Skills",
       skills: [
-        "Public Speaking", "Writing", "Research"
-      ] 
+        "Technical Writing", "Agile Methodologies", "Public Speaking"
+      ]
     }
   ],
   languages: [
     "English",
-    "Hindi",
+    "Spanish",
   ],
   certifications: [
-    "Certified Web Professional-Web Developer",
-    "Java Development Certified Professional",
+    "AWS Certified Solutions Architect",
+    "Certified ScrumMaster",
   ],
 };
 

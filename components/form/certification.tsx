@@ -34,6 +34,7 @@ const Certification = () => {
           placeholder={title}
           name={title}
           value={skill}
+          variant="bordered"
           onChange={(e) => handleSkills(e, index, skillType)}
         />
       ))}

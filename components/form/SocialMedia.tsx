@@ -36,7 +36,7 @@ const SocialMedia = () => {
 
   return (
     <div className="flex-col-gap-2">
-      <h2 className="input-title">Social Media</h2>
+      <h2 className="font-bold">Social Media</h2>
       {resumeData.socialMedia.map((socialMedia, index) => (
         <div key={index} className="flex gap-2">
           <Input

@@ -35,6 +35,7 @@ const Language = () => {
           type="text"
           placeholder={placeholder}
           name="skill"
+          variant="bordered"
           value={skill}
           onChange={(e) => handleSkills(e, index, skillType)}
         />
