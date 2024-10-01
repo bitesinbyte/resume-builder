@@ -58,12 +58,32 @@ export default function RootLayout({
                     fontSans.variable
                 )}>
                 <Providers themeProps={{ attribute: "class", enableSystem: false }}>
-                    <div>
-                        <NavigationBar />
-                        <main className="container mx-auto flex-grow">
-                            <Toaster position="top-right" reverseOrder={false} />
-                            {children}
-                        </main>
+                    <div className="container mx-auto flex justify-between">
+                        <div className="hidden lg:block w-20 sticky top-0">
+                            <ins
+                                className="adsbygoogle"
+                                style={{ display: "block", height: "100vh", width: "160px" }} // Adjust width as needed
+                                data-ad-client="ca-pub-2889277787752693"
+                                data-ad-slot="6964229794"
+                                data-ad-format="auto"
+                            />
+                        </div>
+                        <div className="flex-grow">
+                            <NavigationBar />
+                            <main className="container mx-auto flex-grow">
+                                <Toaster position="top-right" reverseOrder={false} />
+                                {children}
+                            </main>
+                        </div>
+                        <div className="hidden lg:block w-20 sticky top-0">
+                            <ins
+                                className="adsbygoogle"
+                                style={{ display: "block", height: "100vh", width: "160px" }} // Adjust width as needed
+                                data-ad-client="ca-pub-2889277787752693"
+                                data-ad-slot="2158689318"
+                                data-ad-format="auto"
+                            />
+                        </div>
                     </div>
                 </Providers>
                 <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2889277787752693"
