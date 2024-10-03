@@ -1,4 +1,4 @@
-# ATSResume
+# Resume Builder
 
 A cutting-edge resume builder that helps job seekers create a professional, ATS-friendly resume in minutes. Our platform uses the latest technology to analyze and optimize your resume for maximum visibility and success with applicant tracking systems. Say goodbye to frustration and wasted time spent on manual resume formatting. Create your winning resume with ATSResume today and get noticed by employers.
 
@@ -6,7 +6,6 @@ A cutting-edge resume builder that helps job seekers create a professional, ATS-
 
 #### https://www.resumego.net/resume-checker/
 
-![image](https://user-images.githubusercontent.com/61316762/218143206-f0e5e764-52bc-4c25-84f2-6b2fff00cd4b.png)
 
 ## Change Log
 
