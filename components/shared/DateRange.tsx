@@ -4,7 +4,7 @@ const DateRange = ({ startYear, endYear, id }: { startYear: string, endYear: str
     }
 
     const start = new Date(startYear);
-    const end = new Date(endYear);
+    const end = endYear ? new Date(endYear) : null;
     return (
         <p id={id} className="sub-content">
             {start.toLocaleString('default', { month: 'short' })}, {start.getFullYear()} - {end ? end.toLocaleString('default', { month: 'short' }) + ', ' + end.getFullYear() : 'Present'}
