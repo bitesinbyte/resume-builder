@@ -998,7 +998,7 @@
     "@react-types/shared" "3.26.0"
     clsx "^1.2.1"
 
-"@nextui-org/system@2.4.6", "@nextui-org/system@^2.2.6":
+"@nextui-org/system@2.4.6", "@nextui-org/system@^2.4.6":
   version "2.4.6"
   resolved "https://registry.yarnpkg.com/@nextui-org/system/-/system-2.4.6.tgz#1af5b9001131cdda23c4fca0d3ec6139cd763cb9"
   integrity sha512-6ujAriBZMfQ16n6M6Ad9g32KJUa1CzqIVaHN/tymadr/3m8hrr7xDw6z50pVjpCRq2PaaA1hT8Hx7EFU3f2z3Q==
