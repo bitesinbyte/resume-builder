@@ -380,7 +380,7 @@
     "@react-types/breadcrumbs" "3.7.9"
     "@react-types/shared" "3.26.0"
 
-"@nextui-org/button@2.2.9", "@nextui-org/button@^2.0.38":
+"@nextui-org/button@2.2.9", "@nextui-org/button@^2.2.9":
   version "2.2.9"
   resolved "https://registry.yarnpkg.com/@nextui-org/button/-/button-2.2.9.tgz#c0205fa89ea2daceebba7fc6311e8de47c31d4c9"
   integrity sha512-RrfjAZHoc6nmaqoLj40M0Qj3tuDdv2BMGCgggyWklOi6lKwtOaADPvxEorDwY3GnN54Xej+9SWtUwE8Oc3SnOg==
