@@ -975,7 +975,7 @@
     "@nextui-org/shared-utils" "2.1.2"
     "@nextui-org/system-rsc" "2.3.5"
 
-"@nextui-org/switch@2.2.8", "@nextui-org/switch@^2.0.34":
+"@nextui-org/switch@2.2.8", "@nextui-org/switch@^2.2.8":
   version "2.2.8"
   resolved "https://registry.yarnpkg.com/@nextui-org/switch/-/switch-2.2.8.tgz#750ebc9ba9a12abd1e7a0f72dfed558796367116"
   integrity sha512-wk9qQSOfUEtmdWR1omKjmEYzgMjJhVizvfW6Z0rKOiMUuSud2d4xYnUmZhU22cv2WtoPV//kBjXkYD/E/t6rdg==
