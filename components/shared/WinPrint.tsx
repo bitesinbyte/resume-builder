@@ -1,15 +1,18 @@
-import { PdfIcon } from "@/icons/PdfIcon";
-import { Button } from "@nextui-org/button";
-import { Tooltip } from "@nextui-org/react";
+import { Download } from "lucide-react";
 
-export const WinPrint = ({ handlePrint }: { handlePrint: any }) => {
+export const WinPrint = ({ handlePrint }: { handlePrint: () => void }) => {
     return (
-        <Tooltip content="Download Resume">
-            <Button
-                isIconOnly
-                startContent={<PdfIcon />}
-                aria-label="Download Resume"
-                className="exclude-print fixed bottom-5 right-10 font-bold rounded-full bg-white shadow-lg border-2 border-white"
-                onPress={() => handlePrint()} />
-        </Tooltip>);
+        <button
+            aria-label="Download Resume"
+            title="Download Resume as PDF"
+            className="exclude-print fixed bottom-6 right-6 z-40
+                       flex h-12 w-12 items-center justify-center
+                       rounded-full bg-primary text-primary-foreground
+                       shadow-lg transition-all hover:scale-110 hover:shadow-xl
+                       border border-border/50"
+            onClick={() => handlePrint()}
+        >
+            <Download className="h-5 w-5" />
+        </button>
+    );
 };

@@ -1,12 +1,11 @@
 import FormButton from "./FormButton";
 import React, { useContext } from "react";
-import { Input, Textarea } from "@nextui-org/react";
 import { GlobalResumeContext, ResumeContext } from "@/types/global-resume-context";
 
 const Projects = () => {
   const { resumeData, setResumeData } = useContext<GlobalResumeContext>(ResumeContext);
 
-  const handleProjects = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
+  const handleProjects = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, index: number) => {
     const newProjects = [...resumeData.projects];
     switch (e.target.name) {
       case "name":
@@ -48,72 +47,83 @@ const Projects = () => {
     });
   };
 
-  const removeProjects = (index: number) => {
+  const removeProjects = () => {
     const newProjects = [...resumeData.projects];
-    newProjects[index] = newProjects[newProjects.length - 1];
     newProjects.pop();
     setResumeData({ ...resumeData, projects: newProjects });
   };
 
   return (
-    <div>
-      <h2 className="font-bold">Projects</h2>
+    <div className="space-y-3">
+      <h2 className="form-section-title">Projects</h2>
       {resumeData.projects.map((project, index) => (
-        <div key={index} className="flex-col-gap-2">
-          <Input
-            variant="bordered"
-            type="text"
-            placeholder="Project Name"
-            label="Project Name"
-            name="name"
-            value={project.name}
-            onChange={(e) => handleProjects(e, index)}
-          />
-          <Input
-            variant="bordered"
-            type="text"
-            placeholder="Link"
-            name="link"
-            value={project.link}
-            onChange={(e) => handleProjects(e, index)}
-          />
-          <Textarea
-            type="text"
-            placeholder="Description"
-            label="Description"
-            name="description"
-            value={project.description}
-            maxLength={250}
-            onChange={(e) => handleProjects(e, index)}
-          />
-          <Textarea
-            variant="bordered"
-            type="text"
-            placeholder="Key Achievements"
-            label="Key Achievements"
-            name="keyAchievements"
-            value={project.keyAchievements}
-            onChange={(e) => handleProjects(e, index)}
-          />
-          <div className="grid grid-cols-2 gap-1">
-            <Input
-              variant="bordered"
-              type="date"
-              placeholder="Start Year"
-              label="Start Year"
-              name="startYear"
-              value={project.startYear}
+        <div key={index} className="space-y-3 rounded-lg border border-border/50 bg-muted/30 p-4">
+          <div className="space-y-1.5">
+            <label className="form-label">Project Name</label>
+            <input
+              type="text"
+              placeholder="Project Name"
+              name="name"
+              className="form-input"
+              value={project.name}
               onChange={(e) => handleProjects(e, index)}
             />
-            <Input
-              variant="bordered"
-              type="date"
-              placeholder="End Year"
-              label="End Year"
-              name="endYear"
-              value={project.endYear}
+          </div>
+          <div className="space-y-1.5">
+            <label className="form-label">Link</label>
+            <input
+              type="text"
+              placeholder="Link"
+              name="link"
+              className="form-input"
+              value={project.link}
               onChange={(e) => handleProjects(e, index)}
             />
+          </div>
+          <div className="space-y-1.5">
+            <label className="form-label">Description</label>
+            <textarea
+              placeholder="Description"
+              name="description"
+              className="form-textarea"
+              value={project.description}
+              maxLength={250}
+              onChange={(e) => handleProjects(e, index)}
+              rows={3}
+            />
+          </div>
+          <div className="space-y-1.5">
+            <label className="form-label">Key Achievements</label>
+            <textarea
+              placeholder="Key Achievements (one per line)"
+              name="keyAchievements"
+              className="form-textarea"
+              value={project.keyAchievements}
+              onChange={(e) => handleProjects(e, index)}
+              rows={4}
+            />
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="space-y-1.5">
+              <label className="form-label">Start Date</label>
+              <input
+                type="date"
+                name="startYear"
+                className="form-input"
+                value={project.startYear}
+                onChange={(e) => handleProjects(e, index)}
+              />
+            </div>
+            <div className="space-y-1.5">
+              <label className="form-label">End Date</label>
+              <input
+                type="date"
+                name="endYear"
+                className="form-input"
+                value={project.endYear}
+                onChange={(e) => handleProjects(e, index)}
+              />
+            </div>
           </div>
         </div>
       ))}

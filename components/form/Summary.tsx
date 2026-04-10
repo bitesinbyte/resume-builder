@@ -1,21 +1,21 @@
 import React, { useContext } from "react";
-import { Textarea } from "@nextui-org/react";
 import { GlobalResumeContext, ResumeContext } from "@/types/global-resume-context";
+
 const Summary = () => {
   const { resumeData, handleChange } = useContext<GlobalResumeContext>(ResumeContext);
+
   return (
-    <div className="flex-col-gap-2">
-      <h2 className="font-bold">Summary</h2>
-      <div className="grid-4">
-        <Textarea
-          placeholder="Summary"
-          name="summary"
-          variant="bordered"
-          value={resumeData.summary}
-          onChange={handleChange}
-          maxLength={500}
-        />
-      </div>
+    <div className="space-y-3">
+      <h2 className="form-section-title">Summary</h2>
+      <textarea
+        placeholder="Write a brief professional summary..."
+        name="summary"
+        value={resumeData.summary}
+        onChange={handleChange}
+        maxLength={500}
+        className="form-textarea"
+        rows={4}
+      />
     </div>
   );
 };

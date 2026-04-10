@@ -1,6 +1,6 @@
 "use client";
-import React, { createContext, useRef, useState } from "react";
-import { DefaultResumeContextData, DefaultResumeData } from "@/config/default-resume-data";
+import React, { useRef, useState } from "react";
+import { useResumeStorage } from "@/hooks/useResumeStorage";
 import Language from "@/components/form/Language";
 import Preview from "@/components/preview/Preview";
 import FormCP from "@/components/form/FormCP";
@@ -14,23 +14,18 @@ import Projects from "@/components/form/Projects";
 import Skill from "@/components/form/Skill";
 import Certification from "@/components/form/certification";
 import { WinPrint } from "@/components/shared/WinPrint";
-import { Resume } from "@/types/resume";
 import { useReactToPrint } from "react-to-print";
 import { ResumeContext } from "@/types/global-resume-context";
+import { Skill as SkillType } from "@/types/resume";
 
 export default function Home() {
   const contentRef = useRef<HTMLDivElement>(null);
   const handlePrint = useReactToPrint({ contentRef });
-  // resume data
-  const [resumeData, setResumeData] = useState<Resume>(DefaultResumeData);
-
-  // form hide/show
+  const [resumeData, setResumeData] = useResumeStorage();
   const [formClose, setFormClose] = useState(false);
 
-  // profile picture
-  const handleProfilePicture = (e: any) => {
-    const file = e.target.files[0];
-
+  const handleProfilePicture = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
     if (file instanceof Blob) {
       const reader = new FileReader();
       reader.onload = (event) => {
@@ -44,11 +39,12 @@ export default function Home() {
     }
   };
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setResumeData({ ...resumeData, [e.target.name]: e.target.value });
   };
+
   return (
-    <section className="flex flex-col items-center justify-center md:py-10">
+    <section className="mx-auto max-w-5xl px-4 py-6">
       <ResumeContext.Provider
         value={{
           resumeData,
@@ -57,9 +53,9 @@ export default function Home() {
           handleChange,
         }}
       >
-        <div className="f-col gap-4 md:flex-row justify-evenly max-w-7xl md:mx-auto md:h-screen">
+        <div className="flex flex-col gap-6 md:flex-row md:h-[calc(100vh-3.5rem-3rem)]">
           {!formClose && (
-            <form className="p-4 exclude-print md:max-w-[40%] md:h-screen md:overflow-y-scroll">
+            <form className="exclude-print md:w-[40%] md:h-full md:overflow-y-auto space-y-6 rounded-xl border bg-card p-5">
               <LoadUnload />
               <PersonalInformation />
               <SocialMedia />
@@ -67,19 +63,17 @@ export default function Home() {
               <Education />
               <WorkExperience />
               <Projects />
-              {
-                resumeData.skills.map((skill: any, index: any) => (
-                  <Skill
-                    title={skill.title}
-                    key={index}
-                  />
-                ))
-              }
+              {resumeData.skills.map((skill: SkillType, index: number) => (
+                <Skill title={skill.title} key={index} />
+              ))}
               <Language />
               <Certification />
             </form>
           )}
-          <div className="md:max-w-[60%] sticky top-0 preview rm-padding-print p-6 md:overflow-y-scroll md:h-screen" ref={contentRef}>
+          <div
+            className={`${formClose ? "w-full" : "md:w-[60%]"} sticky top-[4.5rem] preview rm-padding-print md:overflow-y-auto md:h-[calc(100vh-3.5rem-3rem)] rounded-xl border bg-card p-6`}
+            ref={contentRef}
+          >
             <Preview />
           </div>
         </div>
@@ -88,5 +82,4 @@ export default function Home() {
       </ResumeContext.Provider>
     </section>
   );
-};
-
+}

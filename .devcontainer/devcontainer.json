@@ -1,37 +1,22 @@
 {
     "name": "resume-builder",
-    "runArgs": [
-        "--platform=linux/amd64"
-    ],
-    "containerUser": "root",
-    "updateRemoteUserUID": true,
-    "containerEnv": {
-        "HOME": "/home/node"
-    },
     "build": {
         "dockerfile": "Dockerfile",
         "args": {
-            "VARIANT": "latest"
+            "VARIANT": "22"
         }
     },
     "customizations": {
         "vscode": {
             "extensions": [
-                "shardulm94.trailing-spaces",
-                "IBM.output-colorizer",
-                "humao.rest-client",
-                "GitHub.copilot",
-                "ms-vscode-remote.remote-containers",
-                "bradlc.vscode-tailwindcss"
+                "bradlc.vscode-tailwindcss",
+                "GitHub.copilot"
             ]
         }
     },
-    "remoteUser": "root",
+    "remoteUser": "node",
     "features": {
         "ghcr.io/devcontainers/features/git:1": "os-provided"
-    },
-    "remoteEnv": {
-        "DISPLAY": ":0"
     },
     "portsAttributes": {
         "3000": {

@@ -1,32 +1,28 @@
-import { Button } from "@nextui-org/button";
-import { Tooltip } from "@nextui-org/react";
-import { MdAddCircle, MdRemoveCircle } from "react-icons/md";
+import { PlusCircle, MinusCircle } from "lucide-react";
 
-const FormButton = ({ size, remove, add }: { size: any, remove: any, add: any }) => {
-
+const FormButton = ({ size, remove, add }: { size: number; remove: () => void; add: () => void }) => {
   return (
-    <div className="flex-wrap-gap-2 mb-2">
-      <Tooltip content="Add">
-        <Button onClick={add}
-          aria-label="Add"
-          variant="light"
-          isIconOnly
-          startContent={<MdAddCircle className="text-xl" />}
-        /></Tooltip>
-
-      {
-        size > 0 &&
-        <Tooltip content="Remove">
-          <Button onClick={remove}
-            aria-label="Remove"
-            variant="light"
-            isIconOnly
-            startContent={<MdRemoveCircle className="text-xl" />} />
-
-        </Tooltip>
-      }
+    <div className="flex items-center gap-2">
+      <button
+        type="button"
+        onClick={add}
+        aria-label="Add"
+        className="btn-ghost rounded-md p-2 text-muted-foreground hover:text-foreground transition-colors"
+      >
+        <PlusCircle className="h-5 w-5" />
+      </button>
+      {size > 0 && (
+        <button
+          type="button"
+          onClick={remove}
+          aria-label="Remove"
+          className="btn-ghost rounded-md p-2 text-muted-foreground hover:text-destructive transition-colors"
+        >
+          <MinusCircle className="h-5 w-5" />
+        </button>
+      )}
     </div>
-  )
-}
+  );
+};
 
 export default FormButton;

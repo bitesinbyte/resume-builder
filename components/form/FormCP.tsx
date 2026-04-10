@@ -1,23 +1,27 @@
-import { Button } from "@nextui-org/button";
-import { Tooltip } from "@nextui-org/react";
-import React, { } from "react";
-import { BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill } from "react-icons/bs"
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const FormCP = ({ formClose, setFormClose }: {
-  formClose: boolean,
-  setFormClose: any
+  formClose: boolean;
+  setFormClose: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   return (
-    <Tooltip content={formClose ? "Form Open" : "Form Close"}>
-      <Button
-        aria-label="Form Open/Close"
-        className="exclude-print fixed bottom-5 left-10 font-bold rounded-full shadow-lg border-2 border-white"
-        onClick={() => setFormClose(!formClose)}
-        isIconOnly
-        startContent={formClose ? <BsFillArrowRightCircleFill className="w-10 h-10" title="Form Open" /> : <BsFillArrowLeftCircleFill className="w-10 h-10" title="Form Close" />}
-      />
-    </Tooltip>
-  )
-}
+    <button
+      aria-label={formClose ? "Open Form" : "Close Form"}
+      title={formClose ? "Open Form" : "Close Form"}
+      className="exclude-print fixed bottom-6 left-6 z-40
+                 flex h-12 w-12 items-center justify-center
+                 rounded-full bg-primary text-primary-foreground
+                 shadow-lg transition-all hover:scale-110 hover:shadow-xl
+                 border border-border/50"
+      onClick={() => setFormClose(!formClose)}
+    >
+      {formClose ? (
+        <ChevronRight className="h-5 w-5" />
+      ) : (
+        <ChevronLeft className="h-5 w-5" />
+      )}
+    </button>
+  );
+};
 
 export default FormCP;

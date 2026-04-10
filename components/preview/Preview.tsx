@@ -1,64 +1,64 @@
-/* eslint-disable react/jsx-no-undef */
 import {
-  FaGithub,
-  FaLinkedin,
-  FaTwitter,
-  FaFacebook,
-  FaInstagram,
-  FaYoutube, FaBold, FaItalic, FaPlus, FaMinus, FaAlignLeft, FaAlignCenter, FaAlignRight,
-  FaUnderline,
-} from "react-icons/fa";
-import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
-import { CgWebsite } from "react-icons/cg";
+  Github,
+  Linkedin,
+  Twitter,
+  Facebook,
+  Instagram,
+  Youtube,
+  Globe,
+  Bold,
+  Italic,
+  Underline,
+  Plus,
+  Minus,
+  AlignLeft,
+  AlignCenter,
+  AlignRight,
+  Mail,
+  MapPin,
+  Phone,
+} from "lucide-react";
 import Skills from "./Skills";
 import DateRange from "@/components/shared/DateRange";
 import ContactInfo from "./ContactInfo";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { GlobalResumeContext, ResumeContext } from "@/types/global-resume-context";
 import dynamic from "next/dynamic";
 import Language from "./Language";
 import Certification from "./Certification";
 import { HighlightMenu } from "react-highlight-menu";
 import useKeyboardShortcut from "../../hooks/useKeyboardShortcut";
+import type { DropResult } from "@hello-pangea/dnd";
 
 const DragDropContext = dynamic(
-  () =>
-    import("react-beautiful-dnd").then((mod) => {
-      return mod.DragDropContext;
-    }),
+  () => import("@hello-pangea/dnd").then((mod) => mod.DragDropContext),
   { ssr: false }
 );
 const Droppable = dynamic(
-  () =>
-    import("react-beautiful-dnd").then((mod) => {
-      return mod.Droppable;
-    }),
+  () => import("@hello-pangea/dnd").then((mod) => mod.Droppable),
   { ssr: false }
 );
 const Draggable = dynamic(
-  () =>
-    import("react-beautiful-dnd").then((mod) => {
-      return mod.Draggable;
-    }),
+  () => import("@hello-pangea/dnd").then((mod) => mod.Draggable),
   { ssr: false }
 );
 
 const Preview = () => {
   const { resumeData, setResumeData } = useContext<GlobalResumeContext>(ResumeContext);
-  const [content, setContent] = useState(resumeData);
-  const icons = [
-    { name: "github", icon: <FaGithub /> },
-    { name: "linkedin", icon: <FaLinkedin /> },
-    { name: "twitter", icon: <FaTwitter /> },
-    { name: "facebook", icon: <FaFacebook /> },
-    { name: "instagram", icon: <FaInstagram /> },
-    { name: "youtube", icon: <FaYoutube /> },
-    { name: "website", icon: <CgWebsite /> },
+
+  const icons: { name: string; icon: React.ReactNode }[] = [
+    { name: "github", icon: <Github className="h-3 w-3" /> },
+    { name: "linkedin", icon: <Linkedin className="h-3 w-3" /> },
+    { name: "twitter", icon: <Twitter className="h-3 w-3" /> },
+    { name: "facebook", icon: <Facebook className="h-3 w-3" /> },
+    { name: "instagram", icon: <Instagram className="h-3 w-3" /> },
+    { name: "youtube", icon: <Youtube className="h-3 w-3" /> },
+    { name: "website", icon: <Globe className="h-3 w-3" /> },
   ];
 
-  const onDragEnd = (result: any) => {
+  const onDragEnd = (result: DropResult) => {
     const { destination, source } = result;
 
     if (!destination) return;
@@ -114,31 +114,39 @@ const Preview = () => {
     }
   };
 
-  const MenuButton = ({ title, icon, onClick }: { title: string, icon: any, onClick: any }) => (
+  const MenuButton = ({
+    title,
+    icon,
+    onClick,
+  }: {
+    title: string;
+    icon: React.ReactNode;
+    onClick: () => void;
+  }) => (
     <button
       onClick={onClick}
       title={title}
-      className="p-2 rounded font-semibold"
+      className="p-2 rounded-md font-semibold hover:bg-accent transition-colors"
     >
       {icon}
     </button>
   );
 
-  const formatText = (command: any, value?: string) => {
+  const formatText = (command: string, value?: string) => {
     document.execCommand(command, false, value);
   };
 
-  const toggleBold = () => formatText('bold');
-  const toggleItalic = () => formatText('italic');
-  const toggleUnderline = () => formatText('underline');
-  const changeFontSize = (size: string) => formatText('fontSize', size);
+  const toggleBold = () => formatText("bold");
+  const toggleItalic = () => formatText("italic");
+  const toggleUnderline = () => formatText("underline");
+  const changeFontSize = (size: string) => formatText("fontSize", size);
   const alignText = (alignment: string) => formatText(`justify${alignment}`);
 
-  useKeyboardShortcut('b', true, toggleBold);
-  useKeyboardShortcut('i', true, toggleItalic);
-  useKeyboardShortcut('u', true, toggleUnderline);
+  useKeyboardShortcut("b", true, toggleBold);
+  useKeyboardShortcut("i", true, toggleItalic);
+  useKeyboardShortcut("u", true, toggleUnderline);
 
-  const A4PageWrapper = ({ children }: { children: any }) => {
+  const A4PageWrapper = ({ children }: { children: React.ReactNode }) => {
     const alertA4Size = () => {
       const preview: Element | null = document.querySelector(".preview");
       if (!preview) return;
@@ -159,55 +167,32 @@ const Preview = () => {
     <A4PageWrapper>
       <HighlightMenu
         styles={{
-          borderColor: "#C026D3",
-          backgroundColor: "#C026D3",
-          boxShadow: "0px 5px 5px 0px rgba(0, 0, 0, 0.15)",
+          borderColor: "hsl(var(--primary))",
+          backgroundColor: "hsl(var(--primary))",
+          boxShadow: "0px 5px 15px 0px rgba(0, 0, 0, 0.2)",
           zIndex: 10,
-          borderRadius: "5px",
-          padding: "3px",
+          borderRadius: "8px",
+          padding: "4px",
         }}
         target="body"
         menu={() => (
           <>
-            <MenuButton
-              title="Bold (Ctrl+B)"
-              icon={<FaBold />}
-              onClick={toggleBold} />
-            <MenuButton
-              title="Italic (Ctrl+I)"
-              icon={<FaItalic />}
-              onClick={toggleItalic} />
-            <MenuButton
-              title="Underline (Ctrl+U)"
-              icon={<FaUnderline />}
-              onClick={toggleUnderline} />
-            <MenuButton
-              title="Increase Font Size"
-              icon={<FaPlus />}
-              onClick={() => changeFontSize("4")} />
-            <MenuButton
-              title="Decrease Font Size"
-              icon={<FaMinus />}
-              onClick={() => changeFontSize("2")} />
-
-            <MenuButton
-              title="Align Left"
-              icon={<FaAlignLeft />}
-              onClick={() => alignText('Left')} />
-            <MenuButton
-              title="Align Center"
-              icon={<FaAlignCenter />}
-              onClick={() => alignText('Center')} />
-            <MenuButton
-              title="Align Right"
-              icon={<FaAlignRight />}
-              onClick={() => alignText('Right')} />
+            <MenuButton title="Bold (Ctrl+B)" icon={<Bold className="h-4 w-4" />} onClick={toggleBold} />
+            <MenuButton title="Italic (Ctrl+I)" icon={<Italic className="h-4 w-4" />} onClick={toggleItalic} />
+            <MenuButton title="Underline (Ctrl+U)" icon={<Underline className="h-4 w-4" />} onClick={toggleUnderline} />
+            <MenuButton title="Increase Font Size" icon={<Plus className="h-4 w-4" />} onClick={() => changeFontSize("4")} />
+            <MenuButton title="Decrease Font Size" icon={<Minus className="h-4 w-4" />} onClick={() => changeFontSize("2")} />
+            <MenuButton title="Align Left" icon={<AlignLeft className="h-4 w-4" />} onClick={() => alignText("Left")} />
+            <MenuButton title="Align Center" icon={<AlignCenter className="h-4 w-4" />} onClick={() => alignText("Center")} />
+            <MenuButton title="Align Right" icon={<AlignRight className="h-4 w-4" />} onClick={() => alignText("Right")} />
           </>
-        )} allowedPlacements={[]} />
+        )}
+        allowedPlacements={[]}
+      />
       <DragDropContext onDragEnd={onDragEnd}>
         <div className="f-col items-center mb-1">
           {resumeData && resumeData.profilePicture && resumeData.profilePicture.length > 0 && (
-            <div className="w-24 h-24 rounded-full overflow-hidden border-2">
+            <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-border">
               <Image
                 src={resumeData.profilePicture}
                 alt="profile"
@@ -225,9 +210,9 @@ const Preview = () => {
             teldata={resumeData.contactInformation}
             emaildata={resumeData.email}
             addressdata={resumeData.address}
-            telicon={<MdPhone />}
-            emailicon={<MdEmail />}
-            addressicon={<MdLocationOn />}
+            telicon={<Phone className="h-3 w-3" />}
+            emailicon={<Mail className="h-3 w-3" />}
+            addressicon={<MapPin className="h-3 w-3" />}
           />
           <div className="grid grid-cols-3 gap-1">
             {resumeData.socialMedia.map((socialMedia, index) => {
@@ -239,15 +224,11 @@ const Preview = () => {
                   title={socialMedia.socialMedia}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-1 social-media align-center justify-center "
-                // Prevent text overflowing, If the socialMedia.link string is longer than 32 characters, apply the wordWrap and display styles to this <a> tag.
-                // wordWrap: "break-word" breaks the text onto the next line if it's too long,
-                // display: "inline-block" is necessary for wordWrap to work on an inline element like <a>.
-
+                  className="inline-flex items-center gap-1 social-media align-center justify-center"
                 >
-                  {icons.map((icon, index) => {
+                  {icons.map((icon, iconIndex) => {
                     if (icon.name === socialMedia.socialMedia.toLowerCase()) {
-                      return <span key={index}>{icon.icon}</span>;
+                      return <span key={iconIndex}>{icon.icon}</span>;
                     }
                   })}
                   {socialMedia.link}
@@ -256,13 +237,13 @@ const Preview = () => {
             })}
           </div>
         </div>
-        <hr className="border-dashed my-2" />
-        {/* two column start */}
+        <hr className="border-dashed border-border my-2" />
+        {/* two column layout */}
         <div className="grid grid-cols-3 gap-6">
           <div className="col-span-1 space-y-2">
             {resumeData.summary.length > 0 && (
               <div className="mb-1">
-                <h2 className="section-title mb-1 border-b-2 border-gray-300">
+                <h2 className="section-title mb-1 border-b-2 border-border">
                   Summary
                 </h2>
                 <p className="content break-words">{resumeData.summary}</p>
@@ -271,7 +252,7 @@ const Preview = () => {
             <div>
               {resumeData.education.length > 0 && (
                 <div className="mb-1">
-                  <h2 className="section-title mb-1 border-b-2 border-gray-300">
+                  <h2 className="section-title mb-1 border-b-2 border-border">
                     Education
                   </h2>
                   {resumeData.education.map((item, index) => (
@@ -302,9 +283,10 @@ const Preview = () => {
                           ref={provided.innerRef}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
-                          className={`mb-1 ${snapshot.isDragging &&
-                            "outline-dashed outline-2 outline-gray-400"
-                            }`}
+                          className={`mb-1 ${
+                            snapshot.isDragging &&
+                            "outline-dashed outline-2 outline-muted-foreground/50"
+                          }`}
                         >
                           <Skills title={skill.title} skills={skill.skills} />
                         </div>
@@ -328,7 +310,7 @@ const Preview = () => {
                 {(provided) => (
                   <div {...provided.droppableProps} ref={provided.innerRef}>
                     <h2
-                      className="section-title mb-1 border-b-2 border-gray-300 editable"
+                      className="section-title mb-1 border-b-2 border-border editable"
                       contentEditable
                       suppressContentEditableWarning
                     >
@@ -345,9 +327,10 @@ const Preview = () => {
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
-                            className={`mb-1 ${snapshot.isDragging &&
-                              "outline-dashed outline-2 outline-gray-400"
-                              }`}
+                            className={`mb-1 ${
+                              snapshot.isDragging &&
+                              "outline-dashed outline-2 outline-muted-foreground/50"
+                            }`}
                           >
                             <div className="flex flex-row justify-between space-y-1">
                               <p className="content i-bold">{item.company}</p>
@@ -387,9 +370,10 @@ const Preview = () => {
                                               {...provided.dragHandleProps}
                                               className={`
                                           hover:outline-dashed hover:outline-2
-                                          ${snapshot.isDragging &&
-                                                "outline-dashed outline-2 outline-gray-400"
-                                                }`}
+                                          ${
+                                            snapshot.isDragging &&
+                                            "outline-dashed outline-2 outline-muted-foreground/50"
+                                          }`}
                                             >
                                               <div
                                                 dangerouslySetInnerHTML={{
@@ -419,7 +403,7 @@ const Preview = () => {
                 {(provided) => (
                   <div {...provided.droppableProps} ref={provided.innerRef}>
                     <h2
-                      className="section-title mb-1 border-b-2 border-gray-300 editable"
+                      className="section-title mb-1 border-b-2 border-border editable"
                       contentEditable
                       suppressContentEditableWarning
                     >
@@ -436,24 +420,24 @@ const Preview = () => {
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
-                            className={`mb-1 ${snapshot.isDragging &&
-                              "outline-dashed outline-2 outline-gray-400"
-                              }`}
+                            className={`mb-1 ${
+                              snapshot.isDragging &&
+                              "outline-dashed outline-2 outline-muted-foreground/50"
+                            }`}
                           >
                             <div className="flex flex-row justify-between space-y-1">
                               <p className="content i-bold">{item.name}</p>
                               <DateRange
                                 startYear={item.startYear}
                                 endYear={item.endYear}
-                                id={`work-experience-start-end-date`}
+                                id={`project-start-end-date`}
                               />
                             </div>
-
                             <Link
                               href={item.link}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="content"
+                              className="content text-foreground/70 hover:text-foreground transition-colors"
                             >
                               {item.link}
                             </Link>
@@ -484,9 +468,10 @@ const Preview = () => {
                                               {...provided.dragHandleProps}
                                               className={`
                                           hover:outline-dashed hover:outline-2
-                                          ${snapshot.isDragging &&
-                                                "outline-dashed outline-2 outline-gray-400"
-                                                }`}
+                                          ${
+                                            snapshot.isDragging &&
+                                            "outline-dashed outline-2 outline-muted-foreground/50"
+                                          }`}
                                             >
                                               <div
                                                 dangerouslySetInnerHTML={{
@@ -503,9 +488,7 @@ const Preview = () => {
                               )}
                             </Droppable>
                           </div>
-
                         )}
-
                       </Draggable>
                     ))}
                     {provided.placeholder}
@@ -514,7 +497,6 @@ const Preview = () => {
               </Droppable>
             )}
           </div>
-
         </div>
       </DragDropContext>
     </A4PageWrapper>

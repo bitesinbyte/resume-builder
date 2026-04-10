@@ -1,26 +1,24 @@
-import { FaCloudUploadAlt, FaCloudDownloadAlt } from "react-icons/fa";
+import { Upload, Download } from "lucide-react";
 import React, { useContext } from "react";
-import { Button, Input } from "@nextui-org/react";
 import { GlobalResumeContext, ResumeContext } from "@/types/global-resume-context";
+import { Resume } from "@/types/resume";
 
 const LoadUnload = () => {
   const { resumeData, setResumeData } = useContext<GlobalResumeContext>(ResumeContext);
 
-  // load backup resume data
-  const handleLoad = (event: any) => {
-    const file = event.target.files[0];
+  const handleLoad = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
     const reader = new FileReader();
     reader.onload = (event) => {
       if (!event?.target?.result) return;
-
-      const resumeData = JSON.parse(event.target.result as string);
-      setResumeData(resumeData);
+      const data = JSON.parse(event.target.result as string) as Resume;
+      setResumeData(data);
     };
     reader.readAsText(file);
   };
 
-  // download resume data
-  const handleDownload = (data: any, filename: any, event: any) => {
+  const handleDownload = (data: Resume, filename: string, event: React.MouseEvent) => {
     event.preventDefault();
     const jsonData = JSON.stringify(data);
     const blob = new Blob([jsonData], { type: "application/json" });
@@ -31,35 +29,29 @@ const LoadUnload = () => {
   };
 
   return (
-    <div className="flex flex-wrap gap-4 mb-2 justify-center">
-      <label className="flex gap-2 items-center border-solid border-2 border-gray-300 dark:border-slate-500 cursor-pointer p-2 rounded-lg">
-        <h2 className="text-small">Load Data</h2>
-        <FaCloudUploadAlt className="text-[1.2rem]" />
-        <Input
+    <div className="flex flex-wrap gap-3 justify-center">
+      <label className="btn-outline cursor-pointer gap-2">
+        <Upload className="h-4 w-4" />
+        <span>Load Data</span>
+        <input
           aria-label="Load Data"
-          label="Load Data"
           className="hidden"
           type="file"
           onChange={handleLoad}
           accept=".json"
         />
       </label>
-      <Button
+      <button
         aria-label="Save Data"
-        variant="bordered"
+        className="btn-outline gap-2"
         onClick={(event) =>
-          handleDownload(
-            resumeData,
-            resumeData.name + ".json",
-            event
-          )
+          handleDownload(resumeData, resumeData.name + ".json", event)
         }
-        endContent={<FaCloudDownloadAlt className="text-[1.2rem]" />}
       >
+        <Download className="h-4 w-4" />
         Save Data
-      </Button>
+      </button>
     </div>
-
   );
 };
 

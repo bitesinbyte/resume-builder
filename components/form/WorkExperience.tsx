@@ -1,15 +1,11 @@
 import FormButton from "./FormButton";
 import React, { useContext } from "react";
-import { Input, Textarea } from "@nextui-org/react";
 import { GlobalResumeContext, ResumeContext } from "@/types/global-resume-context";
 
 const WorkExperience = () => {
-  const {
-    resumeData,
-    setResumeData,
-  } = useContext<GlobalResumeContext>(ResumeContext);
+  const { resumeData, setResumeData } = useContext<GlobalResumeContext>(ResumeContext);
 
-  const handleWorkExperience = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
+  const handleWorkExperience = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, index: number) => {
     const newworkExperience = [...resumeData.workExperience];
     switch (e.target.name) {
       case "company":
@@ -51,76 +47,83 @@ const WorkExperience = () => {
     });
   };
 
-  const removeWorkExperience = (index: number) => {
+  const removeWorkExperience = () => {
     const newworkExperience = [...resumeData.workExperience];
-    newworkExperience[index] = newworkExperience[newworkExperience.length - 1];
     newworkExperience.pop();
     setResumeData({ ...resumeData, workExperience: newworkExperience });
   };
 
   return (
-    <div className="flex-col-gap-2">
-      <h2 className="font-bold">Work Experience</h2>
+    <div className="space-y-3">
+      <h2 className="form-section-title">Work Experience</h2>
       {resumeData.workExperience.map((workExperience, index) => (
-        <div key={index} className="flex-col-gap-2">
-          <Input
-            type="text"
-            variant="bordered"
-            placeholder="Company"
-            label="Company"
-            name="company"
-            className="w-full"
-            value={workExperience.company}
-            onChange={(e) => handleWorkExperience(e, index)}
-          />
-          <Input
-            variant="bordered"
-            type="text"
-            placeholder="Job Title"
-            label="Job Title"
-            name="position"
-            className="w-full"
-            value={workExperience.position}
-            onChange={(e) => handleWorkExperience(e, index)}
-          />
-          <Textarea
-            type="text"
-            variant="bordered"
-            placeholder="Description"
-            label="Description"
-            name="description"
-            value={workExperience.description}
-            maxLength={250}
-            onChange={(e) => handleWorkExperience(e, index)}
-          />
-          <Textarea
-            variant="bordered"
-            type="text"
-            placeholder="Key Achievements"
-            label="Key Achievements"
-            name="keyAchievements"
-            value={workExperience.keyAchievements}
-            onChange={(e) => handleWorkExperience(e, index)}
-          />
-          <div className="grid grid-cols-2 gap-1">
-            <Input
-              variant="bordered"
-              type="date"
-              placeholder="Start Year"
-              label="Start Year"
-              name="startYear"
-              value={workExperience.startYear}
+        <div key={index} className="space-y-3 rounded-lg border border-border/50 bg-muted/30 p-4">
+          <div className="space-y-1.5">
+            <label className="form-label">Company</label>
+            <input
+              type="text"
+              placeholder="Company"
+              name="company"
+              className="form-input"
+              value={workExperience.company}
               onChange={(e) => handleWorkExperience(e, index)}
             />
-            <Input
-              variant="bordered"
-              type="date"
-              placeholder="End Year"
-              label="End Year"
-              name="endYear"
-              value={workExperience.endYear}
+          </div>
+          <div className="space-y-1.5">
+            <label className="form-label">Job Title</label>
+            <input
+              type="text"
+              placeholder="Job Title"
+              name="position"
+              className="form-input"
+              value={workExperience.position}
               onChange={(e) => handleWorkExperience(e, index)}
             />
+          </div>
+          <div className="space-y-1.5">
+            <label className="form-label">Description</label>
+            <textarea
+              placeholder="Description"
+              name="description"
+              className="form-textarea"
+              value={workExperience.description}
+              maxLength={250}
+              onChange={(e) => handleWorkExperience(e, index)}
+              rows={3}
+            />
+          </div>
+          <div className="space-y-1.5">
+            <label className="form-label">Key Achievements</label>
+            <textarea
+              placeholder="Key Achievements (one per line)"
+              name="keyAchievements"
+              className="form-textarea"
+              value={workExperience.keyAchievements}
+              onChange={(e) => handleWorkExperience(e, index)}
+              rows={4}
+            />
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="space-y-1.5">
+              <label className="form-label">Start Date</label>
+              <input
+                type="date"
+                name="startYear"
+                className="form-input"
+                value={workExperience.startYear}
+                onChange={(e) => handleWorkExperience(e, index)}
+              />
+            </div>
+            <div className="space-y-1.5">
+              <label className="form-label">End Date</label>
+              <input
+                type="date"
+                name="endYear"
+                className="form-input"
+                value={workExperience.endYear}
+                onChange={(e) => handleWorkExperience(e, index)}
+              />
+            </div>
           </div>
         </div>
       ))}

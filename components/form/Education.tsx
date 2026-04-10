@@ -1,11 +1,11 @@
 import FormButton from "./FormButton";
-import React, { Context, useContext } from "react";
-import { Input } from "@nextui-org/react";
+import React, { useContext } from "react";
 import { GlobalResumeContext, ResumeContext } from "@/types/global-resume-context";
-
+import { Education as EducationType } from "@/types/resume";
 
 const Education = () => {
   const { resumeData, setResumeData } = useContext<GlobalResumeContext>(ResumeContext);
+
   const handleEducation = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
     const newEducation = [...resumeData.education];
     switch (e.target.name) {
@@ -35,59 +35,66 @@ const Education = () => {
     });
   };
 
-  const removeEducation = (index: any) => {
+  const removeEducation = () => {
     const newEducation = [...resumeData.education];
-    newEducation[index] = newEducation[newEducation.length - 1];
     newEducation.pop();
     setResumeData({ ...resumeData, education: newEducation });
   };
 
   return (
-    <div className="flex-col-gap-2">
-      <h2 className="font-bold">Education</h2>
-      {resumeData.education.map((education: any, index: any) => (
-        <div key={index} className="flex-col-gap-2">
-          <Input
-            variant="bordered"
-            type="text"
-            placeholder="School"
-            name="school"
-            className="w-full"
-            label="School"
-            value={education.school}
-            onChange={(e) => handleEducation(e, index)} />
-          <Input
-            type="text"
-            variant="bordered"
-            placeholder="Degree"
-            label="Degree"
-            name="degree"
-            className="w-full"
-            value={education.degree}
-            onChange={(e) => handleEducation(e, index)} />
-          <div className="grid grid-cols-2 gap-1">
-            <Input
-              type="date"
-              variant="bordered"
-              placeholder="Start Year"
-              label="Start Year"
-              name="startYear"
-              value={education.startYear}
-              onChange={(e) => handleEducation(e, index)} />
-            <Input
-              type="date"
-              variant="bordered"
-              placeholder="End Year"
-              label="End Year"
-              name="endYear"
-              value={education.endYear}
-              onChange={(e) => handleEducation(e, index)} />
+    <div className="space-y-3">
+      <h2 className="form-section-title">Education</h2>
+      {resumeData.education.map((education: EducationType, index: number) => (
+        <div key={index} className="space-y-3 rounded-lg border border-border/50 bg-muted/30 p-4">
+          <div className="space-y-1.5">
+            <label className="form-label">School</label>
+            <input
+              type="text"
+              placeholder="School"
+              name="school"
+              className="form-input"
+              value={education.school}
+              onChange={(e) => handleEducation(e, index)}
+            />
+          </div>
+          <div className="space-y-1.5">
+            <label className="form-label">Degree</label>
+            <input
+              type="text"
+              placeholder="Degree"
+              name="degree"
+              className="form-input"
+              value={education.degree}
+              onChange={(e) => handleEducation(e, index)}
+            />
+          </div>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="space-y-1.5">
+              <label className="form-label">Start Date</label>
+              <input
+                type="date"
+                name="startYear"
+                className="form-input"
+                value={education.startYear}
+                onChange={(e) => handleEducation(e, index)}
+              />
+            </div>
+            <div className="space-y-1.5">
+              <label className="form-label">End Date</label>
+              <input
+                type="date"
+                name="endYear"
+                className="form-input"
+                value={education.endYear}
+                onChange={(e) => handleEducation(e, index)}
+              />
+            </div>
           </div>
         </div>
       ))}
       <FormButton size={resumeData.education.length} add={addEducation} remove={removeEducation} />
     </div>
-  )
-}
+  );
+};
 
 export default Education;
