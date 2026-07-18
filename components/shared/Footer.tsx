@@ -1,7 +1,7 @@
 'use client';
 
 import { Logo } from "@/icons/logo";
-import { Github, Linkedin, Instagram } from "lucide-react";
+import { Github, Linkedin, Instagram, X } from "lucide-react";
 
 const products = [
     { label: "Kenntnistrainer", href: "https://www.kenntnistrainer.de" },
@@ -21,6 +21,7 @@ const navigation = [
 
 const socials = [
     { label: "GitHub", href: "https://github.com/lamplitlabs", icon: Github },
+    { label: "X", href: "https://x.com/lamplitlabs", icon: X },
     { label: "LinkedIn", href: "https://www.linkedin.com/company/lamplitlabs", icon: Linkedin },
     { label: "Instagram", href: "https://www.instagram.com/lamplitlabs", icon: Instagram },
 ];
