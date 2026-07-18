@@ -7,8 +7,8 @@ import { Logo } from "../../icons/logo";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-    { label: "Bites In Byte", href: "https://bitesinbyte.com", external: true },
-    { label: "Blog", href: "https://blogs.bitesinbyte.com", external: true },
+    { label: "Lamplit Labs", href: "https://www.lamplitlabs.com", external: true },
+    { label: "Blog", href: "https://blogs.lamplitlabs.com", external: true },
 ];
 
 export const NavigationBar = () => {
