@@ -7,22 +7,22 @@ const products = [
     { label: "Kenntnistrainer", href: "https://www.kenntnistrainer.de" },
     { label: "Fachsprachprufung", href: "https://www.fachsprachtrainer.de" },
     { label: "Leben in Deutschland", href: "https://www.lebenindeutschland.org" },
-    { label: "Developer Tools", href: "https://tools.bitesinbyte.com" },
-    { label: "Resume Builder", href: "https://resume.bitesinbyte.com" },
-    { label: "EDMX Tools", href: "https://edmx.bitesinbyte.com" },
+    { label: "Developer Tools", href: "https://tools.lamplitlabs.com" },
+    { label: "Resume Builder", href: "https://resume.lamplitlabs.com" },
+    { label: "EDMX Tools", href: "https://edmx.lamplitlabs.com" },
 ];
 
 const navigation = [
-    { label: "Products", href: "https://bitesinbyte.com/#products" },
-    { label: "About", href: "https://bitesinbyte.com/#about" },
-    { label: "Blog", href: "https://blogs.bitesinbyte.com" },
-    { label: "Contact", href: "https://bitesinbyte.com/#contact" },
+    { label: "Products", href: "https://www.lamplitlabs.com/#products" },
+    { label: "About", href: "https://www.lamplitlabs.com/#about" },
+    { label: "Blog", href: "https://blogs.lamplitlabs.com" },
+    { label: "Contact", href: "https://www.lamplitlabs.com/#contact" },
 ];
 
 const socials = [
-    { label: "GitHub", href: "https://github.com/bitesinbyte", icon: Github },
-    { label: "LinkedIn", href: "https://www.linkedin.com/company/bitesinbyte", icon: Linkedin },
-    { label: "Instagram", href: "https://www.instagram.com/bitesinbyte", icon: Instagram },
+    { label: "GitHub", href: "https://github.com/lamplitlabs", icon: Github },
+    { label: "LinkedIn", href: "https://www.linkedin.com/company/lamplitlabs", icon: Linkedin },
+    { label: "Instagram", href: "https://www.instagram.com/lamplitlabs", icon: Instagram },
 ];
 
 export const Footer = () => {
@@ -33,18 +33,18 @@ export const Footer = () => {
                     {/* Brand */}
                     <div className="sm:col-span-2 lg:col-span-1">
                         <a
-                            href="https://bitesinbyte.com"
+                            href="https://www.lamplitlabs.com"
                             className="inline-flex items-center gap-2"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
                             <Logo size={28} />
                             <span className="text-base font-semibold tracking-tight">
-                                Bites In Byte
+                                Lamplit Labs
                             </span>
                         </a>
                         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                            Small, practical software packed into every byte.
+                            Small, practical software that illuminates the path forward.
                         </p>
                     </div>
 
@@ -108,7 +108,7 @@ export const Footer = () => {
 
                 {/* Copyright */}
                 <div className="mt-10 border-t pt-6 text-center text-sm text-muted-foreground">
-                    &copy; {new Date().getFullYear()} Bites In Byte. All rights reserved.
+                    &copy; {new Date().getFullYear()} Lamplit Labs. All rights reserved.
                 </div>
             </div>
         </footer>

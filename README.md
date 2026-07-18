@@ -2,7 +2,7 @@
 
 A modern, ATS-friendly resume builder built with Next.js. Create, edit, and export professional resumes with a live preview, drag-and-drop reordering, and automatic local storage persistence.
 
-**Live**: [resume.bitesinbyte.com](https://resume.bitesinbyte.com)
+**Live**: [resume.lamplitlabs.com](https://resume.lamplitlabs.com)
 
 ## Features
 
